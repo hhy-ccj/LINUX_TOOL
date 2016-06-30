@@ -143,7 +143,6 @@ alias chsh="chsh -s" #改变当前shell
 alias e_sh="echo $SHELL" #显示当前shell
 alias open_destop="startxfce4" #打开linux destop图形界面
 alias dswp="find -name \"*.swp\" | xargs rm" #删除当前目录下所有*.swp文件
-alias ln="ln -s" #创建快捷方式
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
 export PI32="/opt/pi32/bin"
