@@ -128,11 +128,16 @@ check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
 zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
-#bindkey "\e\e" sudo-command-line
-# 相对路径快捷命令(进入相应路径时只要 cd ~xxx)
+# ---相对路径快捷命令(进入相应路径时只要 cd ~xxx)
 hash -d br17_br="/home/huayue/jl_svn/br17/branches/FPGA/dual_single_thread/code"
 hash -d br17_tr="/home/huayue/jl_svn/br17/trunk/FPGA"
-# 快捷命令
+# for svn
+hash -d svn_addr="https://192.168.8.211:9001/svn"
+hash -d svn_addr_br17_branches="https://192.168.8.211:9001/svn/BR17/branches/FPGA/dual_single_thread/code"
+hash -d svn_addr_br17_trunk="https://192.168.8.211:9001/svn/BR17/trunk/FPGA/dual_single_thread/code"
+# for my git
+hash -d git_tool_addr="git@github.com:hhy-ccj/LINUX_TOOL"
+# ---快捷命令
 alias s="source ~/.zshrc"
 alias ll="ls -l"
 alias la="ls -al"
@@ -143,6 +148,32 @@ alias chsh="chsh -s" #改变当前shell
 alias e_sh="echo $SHELL" #显示当前shell
 alias open_destop="startxfce4" #打开linux destop图形界面
 alias dswp="find -name \"*.swp\" | xargs rm" #删除当前目录下所有*.swp文件
+alias ln="ln -s" #创建快捷方式
+# for svn
+alias sll="svn log -l"
+alias slv="svn log -l 1 -v"
+alias si="svn info"
+alias st="svn status"
+alias sh="svn log -r HEAD"
+alias su="svn update"
+alias sr="svn revert -R"
+alias sm="svn merge"
+alias sci="svn ci"
+alias svn_br17="svn co https://192.168.8.211:9001/svn/BR17 ./BR17"
+alias svn_br16="svn co https://192.168.8.211:9001/svn/br16_verify ./BR16"
+alias svn_bt15="svn co https://192.168.8.211:9001/svn/AC4600_SDK ./BT15"
+alias svn_bc51="svn co https://192.168.8.211:9001/svn/BC51 ./BC51"
+# for my git
+alias mgkey="ssh-keygen -t rsa -C \"772958417@qq.com\"" #创建rsa公钥
+alias mg_name="git config --global user.name \"hhy-ccj\"" #设置账户名
+alias mg_mail="git config --global user.email \"772958417@qq.com\"" #设置账户邮箱
+alias mgra="git remote add origin" #定义远程服务器别名origin
+alias mga="git add" #加入本地缓存
+alias mgci="git commit -m" #填写commit信息
+alias mgpush="git push origin master -f" #上传到远程仓库master主线上
+alias mgpull="git pull" #从远程仓库获取最新版本并merge到本地
+alias mgr="git revert HEAD" #取消上次commit
+alias mgd="git diff" #比较本地跟远程的差别
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
 export PI32="/opt/pi32/bin"
