@@ -687,7 +687,7 @@ nmap cS :%s/\s\+$//g<cr>:noh<cr>
 nmap cM :%s/\r$//g<cr>:noh<cr>
 
 " ---常规模式下 makefile 快捷键
-let g:mf_way=1
+let g:mf_way=0
 if (g:mf_way)
 	nmap <F7> :wa<CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
 	nmap <F8> :wa<CR> :make clean<CR><CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
