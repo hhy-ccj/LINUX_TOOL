@@ -495,6 +495,7 @@ function!  CscopeSync()
 	else
 		!sync.bat
 	endif
+	" ---cscope设置
 	if has("cscope")
 		" 先断开先前的cscope链接
 		cs kill -1
@@ -513,7 +514,7 @@ function!  CscopeSync()
 			cs add $CSCOPE_DB 
 		endif 
 		set cscopeverbose 
-		" ---自定义快捷键设置：针对光标在文件窗口
+		" 自定义快捷键设置：针对光标在文件窗口
 		nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
 		nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
 		nmap <Leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
@@ -522,7 +523,7 @@ function!  CscopeSync()
 		nmap <Leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
 		nmap <Leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
 		nmap <Leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
-		" ---自定义快捷键设置：针对光标在命令输入窗口
+		" 自定义快捷键设置：针对光标在命令输入窗口
 		nmap ;fs :cscope find s 
 		nmap ;fg :cscope find g 
 		nmap ;fc :cscope find c 
@@ -531,6 +532,10 @@ function!  CscopeSync()
 		nmap ;ff :cscope find f 
 		nmap ;fi :cscope find i 
 		nmap ;fd :cscope find d 
+	endif
+	" ---lookupfile设置
+	if filereadable("filenametags")
+		let g:LookupFile_TagExpr = '"./filenametags"'
 	endif
 endfunction
 " autocmd BufWritePost *.c,*.h silent call CscopeSync()
