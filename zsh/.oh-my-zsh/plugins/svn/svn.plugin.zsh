@@ -1,3 +1,22 @@
+# 相对路径快捷命令(进入相应路径时只要 cd ~xxx)
+hash -d svn_addr="https://192.168.8.211:9001/svn"
+hash -d svn_addr_br17_branches="https://192.168.8.211:9001/svn/BR17/branches/FPGA/dual_single_thread/code"
+hash -d svn_addr_br17_trunk="https://192.168.8.211:9001/svn/BR17/trunk/FPGA/dual_single_thread/code"
+# 快捷命令
+alias sll="svn log -l"
+alias slv="svn log -l 1 -v"
+alias si="svn info"
+alias st="svn status"
+alias sh="svn log -r HEAD"
+alias su="svn update"
+alias sr="svn revert -R"
+alias sm="svn merge"
+alias sci="svn ci"
+alias svn_br17="svn co https://192.168.8.211:9001/svn/BR17 ./BR17"
+alias svn_br16="svn co https://192.168.8.211:9001/svn/br16_verify ./BR16"
+alias svn_bt15="svn co https://192.168.8.211:9001/svn/AC4600_SDK ./BT15"
+alias svn_bc51="svn co https://192.168.8.211:9001/svn/BC51 ./BC51"
+
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
 function svn_prompt_info() {
