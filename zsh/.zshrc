@@ -148,6 +148,8 @@ alias chsh="chsh -s" #改变当前shell
 alias e_sh="echo $SHELL" #显示当前shell
 alias open_destop="startxfce4" #打开linux destop图形界面
 alias dswp="find -name \"*.swp\" | xargs rm" #删除当前目录下所有*.swp文件
+alias dgit="find -name \".git\" | xargs rm" #删除当前目录下所有.git文件
+alias find="find -name" #文件查找 
 alias ln="ln -s" #创建快捷方式
 # for svn
 alias sll="svn log -l"
