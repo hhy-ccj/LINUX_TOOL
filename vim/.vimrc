@@ -688,19 +688,29 @@ nmap cM :%s/\r$//g<cr>:noh<cr>
 
 " ---常规模式下 makefile 快捷键
 let g:mf_way=1
+" for codeblocks build
 function! Codeblocks_build()
 	set makeprg=codeblocks\ --build\ *.cbp 	
 	make							
 	botright copen 6
 	" normal G
 endfunction
+" for makefile build
+function! Makefile_build()
+	set makeprg=make
+	make clean
+	make -j
+	botright copen 6
+	" normal G
+endfunction
 if (g:mf_way)
 	" nmap <F7> :wa<CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
 	" for makefile build
-	nmap <F7> :wa<CR> :set makeprg=make<CR> 						:make clean<CR><CR> :make -j<CR><CR><CR> 	:botright copen 6<CR> <Esc>G<CR>
+	" nmap <F7> :wa<CR> :set makeprg=make<CR> 						:make clean<CR><CR> :make -j<CR><CR><CR> 	:botright copen 6<CR> <Esc>G<CR>
+	nmap <F7> :call Makefile_build()<CR> <Esc>/error<CR><CR>
 	" for codeblocks build
 	" nmap <F8> :wa<CR> :set makeprg=codeblocks\ --build\ *.cbp<CR> 	:make<CR><CR><CR>							:botright copen 6<CR> <Esc>G<CR>
-	nmap <F8> :silent call Codeblocks_build()<CR> <Esc>/error<CR><CR>
+	nmap <F8> :call Codeblocks_build()<CR> <Esc>/error<CR><CR>
 else
 	nmap <F7> :wa<CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
 	nmap <F8> :wa<CR> :make -f MakeALL.mk clean<CR><CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
