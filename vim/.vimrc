@@ -199,7 +199,7 @@ if (g:powerline_en)
 	Bundle 'Lokaltog/vim-powerline'
 endif
 " ~~~在vim界面输入终端命令，并返回到终端
-let g:interactive_en = 1
+let g:interactive_en = 0
 if (g:interactive_en && g:islinux)
 	Bundle 'christoomey/vim-run-interactive'
 endif
@@ -687,10 +687,20 @@ nmap cS :%s/\s\+$//g<cr>:noh<cr>
 nmap cM :%s/\r$//g<cr>:noh<cr>
 
 " ---常规模式下 makefile 快捷键
-let g:mf_way=0
+let g:mf_way=1
+function! Codeblocks_build()
+	set makeprg=codeblocks\ --build\ *.cbp 	
+	make							
+	botright copen 6
+	" normal G
+endfunction
 if (g:mf_way)
-	nmap <F7> :wa<CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
-	nmap <F8> :wa<CR> :make clean<CR><CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	" nmap <F7> :wa<CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	" for makefile build
+	nmap <F7> :wa<CR> :set makeprg=make<CR> 						:make clean<CR><CR> :make -j<CR><CR><CR> 	:botright copen 6<CR> <Esc>G<CR>
+	" for codeblocks build
+	" nmap <F8> :wa<CR> :set makeprg=codeblocks\ --build\ *.cbp<CR> 	:make<CR><CR><CR>							:botright copen 6<CR> <Esc>G<CR>
+	nmap <F8> :silent call Codeblocks_build()<CR> <Esc>/error<CR><CR>
 else
 	nmap <F7> :wa<CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
 	nmap <F8> :wa<CR> :make -f MakeALL.mk clean<CR><CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
