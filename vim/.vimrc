@@ -83,7 +83,8 @@ endif
 au GUIEnter * simalt ~x		" 启动窗口最大化
 syntax on                   " 自动语法高亮
 set number                  " 显示行号
-set cursorline              " 突出显示当前行
+set cursorline              " 高亮显示当前行
+set cursorcolumn			" 高亮显示当前列
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
 set guioptions-=r 			" 关闭右侧滚动条
@@ -763,6 +764,12 @@ endif
 if (g:islinux)
 	nmap <Leader>ez :e ~/.zshrc<CR>
 endif
+
+" ---常规模式下 跳到句首或者句尾
+" 使用说明："; + e" 跳到句尾
+"			"; + h" 跳到句首
+nmap ;e $
+nmap ;h ^
 
 
 if exists('$TMUX')
