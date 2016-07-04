@@ -335,6 +335,14 @@ if (g:nerdtree_en)
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 	map <F2> :NERDTreeToggle<CR>
 endif
+" 常用快捷键(要将光标跳到NERDTree窗口)
+	" I : 显示隐藏文件
+	" o : 打开目录折叠或者打开文件并跳到该文件窗口
+	" O : 递归 打开选中结点下的所有目录
+	" x : 合拢选中结点的父目录
+	" X : 递归 合拢选中结点下的所有目录
+	" r : 递归刷新选中目录
+	" R : 递归刷新根结点
 
 " -------------------------------------------------------------
 "  < vim-run-interactive 插件配置 >
