@@ -107,7 +107,7 @@ set ignorecase				" 搜索忽略大小写
 set incsearch               " 输入搜索内容时就显示搜索结果
 set hlsearch                " 搜索时高亮显示被找到的文本
 set magic                   " 设置魔术(正则表达式:除了 $ . * ^ 之外其他元字符都要加反斜杠)
-"set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+set nowrapscan              " 禁止在搜索到文件两端时重新搜索
 
 " ---文件操作
 set nobackup				"不生成备份文件
@@ -130,7 +130,7 @@ endif
 "set noerrorbells            " 关闭错误信息响铃
 "set backspace=indent,eol,start				" 使回格键（backspace）正常处理indent, eol, start等
 "set whichwrap+=<,>,h,l		" 允许backspace和光标键跨越行边界
-"set nowrap
+"set nowrap 				" 禁止折叠行
 
 
 " ============================================================================
@@ -199,11 +199,6 @@ let g:powerline_en = 1
 if (g:powerline_en)
 	Bundle 'Lokaltog/vim-powerline'
 endif
-" ~~~在vim界面输入终端命令，并返回到终端
-let g:interactive_en = 0
-if (g:interactive_en && g:islinux)
-	Bundle 'christoomey/vim-run-interactive'
-endif
 " ~~~光标停留时显示函数原型提示
 let g:echofunc_en = 0
 if (g:echofunc_en)
@@ -242,13 +237,17 @@ let g:bufexplorer_en = 1
 if (g:bufexplorer_en)
 	Bundle 'jlanzarotta/bufexplorer'
 endif
-" ~~~solarized 主题配色
-Bundle 'altercation/vim-colors-solarized'
 " ~~~增加多窗口标签功能
 let g:minibufexpl_en = 1
 if (g:minibufexpl_en)
 	Bundle 'fholgado/minibufexpl.vim'
 endif
+" ~~~将相同缩进的代码以可视化方式显示
+let g:indent_guides_en = 1
+if (g:indent_guides_en)
+	Bundle 'nathanaelkane/vim-indent-guides'
+endif
+
 
 " ~~~管理当前vim session(会话)
 " Bundle 'xolox/vim-misc'
@@ -344,13 +343,6 @@ endif
 	" X : 递归 合拢选中结点下的所有目录
 	" r : 递归刷新选中目录
 	" R : 递归刷新根结点
-
-" -------------------------------------------------------------
-"  < vim-run-interactive 插件配置 >
-" -------------------------------------------------------------
-if (g:interactive_en && g:islinux)
-	nnoremap <leader>ri :RunInInteractiveShell<space>
-endif
 
 " -------------------------------------------------------------
 "  < nerdcommenter 插件配置 >
@@ -452,6 +444,24 @@ endif
 " -------------------------------------------------------------
 if (g:echofunc_en)
 	set tags=./tags
+endif
+
+" -------------------------------------------------------------
+"  < indent-guides 插件配置 >
+" -------------------------------------------------------------
+if (g:indent_guides_en)
+	" 随 vim 自启动
+	let g:indent_guides_enable_on_vim_startup=1
+	" 从第二层开始可视化显示缩进
+	let g:indent_guides_start_level=2
+	" 色块宽度
+	let g:indent_guides_guide_size=1
+	" 快捷键 i 开/关缩进可视化
+	nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+
+	let g:indent_guides_auto_colors = 0
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 endif
 
 
