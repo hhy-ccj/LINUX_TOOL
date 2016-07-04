@@ -107,7 +107,7 @@ set ignorecase				" 搜索忽略大小写
 set incsearch               " 输入搜索内容时就显示搜索结果
 set hlsearch                " 搜索时高亮显示被找到的文本
 set magic                   " 设置魔术(正则表达式:除了 $ . * ^ 之外其他元字符都要加反斜杠)
-set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+" set nowrapscan              " 禁止在搜索到文件两端时重新搜索
 
 " ---文件操作
 set nobackup				"不生成备份文件
@@ -246,6 +246,17 @@ endif
 let g:indent_guides_en = 1
 if (g:indent_guides_en)
 	Bundle 'nathanaelkane/vim-indent-guides'
+endif
+" ~~~书签提示
+let g:signature = 0
+if (g:signature)
+	Bundle 'kshenoy/vim-signature'
+	" Bundle 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+endif
+" ~~~文本查找与替换
+let g:easygrep = 1
+if (g:easygrep)
+	Bundle 'dkprice/vim-easygrep'
 endif
 
 
@@ -451,7 +462,7 @@ endif
 " -------------------------------------------------------------
 if (g:indent_guides_en)
 	" 随 vim 自启动
-	let g:indent_guides_enable_on_vim_startup=1
+	let g:indent_guides_enable_on_vim_startup=0
 	" 从第二层开始可视化显示缩进
 	let g:indent_guides_start_level=2
 	" 色块宽度
@@ -780,6 +791,16 @@ endif
 "			"; + h" 跳到句首
 nmap ;e $
 nmap ;h ^
+
+" ---常规模式下 使用复制缓存寄存器进行粘贴
+nmap ;p "0p
+
+" ---常规模式下 重新source .vimrc
+nmap ;s :source ~/.vimrc<CR>
+
+" ---常规模式下 tab标签页操作
+nmap - :tabp<CR>
+nmap = :tabn<CR>
 
 
 if exists('$TMUX')
