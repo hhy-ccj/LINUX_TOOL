@@ -311,17 +311,15 @@ endif
 if (g:powerline_en)
 	" open a powerline quickly when vim starts up
 	let g:Powerline_symbols = 'fancy'
+
 	" Always show the statusline
 	set laststatus=2   
 
-	if (g:iswindows)
-		" 解决windows下部分特殊符号显示出错的问题，需要安装4个特殊字体到系统
-		" 地址：https://github.com/eugeii/consolas-powerline-vim
-		" 安装方法：双击.ttf结尾的字体文件即可
-		set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
-	else
-		set guifont=Courier_New:h13:cANSI " 字体字号设置：h13代表字号
-	endif
+	" 解决windows & linux下部分特殊符号显示出错的问题，需要安装4个特殊字体到系统
+	" 下载源地址：https://github.com/eugeii/consolas-powerline-vim
+	" 安装方法：打开"LINUX_TOOL/vim/.vim/fonts/consolas-powerline-vim-master"，双击.ttf结尾的字体文件即可(windows 和 linux下安装方法相同)
+	" set guifont=Courier_New:h13:cANSI " 字体字号设置：h13代表字号
+	set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
 
 " -------------------------------------------------------------
@@ -752,6 +750,12 @@ if (g:islinux)
 else
 	nmap <Leader>ev :e $vim/_vimrc<CR>
 endif
+
+" ---常规模式下 编辑zshrc文件(仅适用于linux)
+if (g:islinux)
+	nmap <Leader>ez :e ~/.zshrc<CR>
+endif
+
 
 if exists('$TMUX')
     set term=screen-256color
