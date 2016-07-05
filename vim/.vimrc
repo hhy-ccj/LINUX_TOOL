@@ -478,9 +478,19 @@ endif
 " -------------------------------------------------------------
 "  < easygrep 插件配置 >
 " -------------------------------------------------------------
+" 详细参考 "~/.vim/bundle/vim-easygrep/README.md"
 if (g:easygrep)
-	nmap <silent>;vt <Leader>vv :botright copen 6<CR>
-	nmap <silent>;vs <Leader>vV :botright copen 6<CR>
+	nmap <silent><Leader>vs <Leader>vv :ccl<CR> :botright copen 6<CR>
+	nmap <silent><Leader>vt <Leader>vV :ccl<CR> :botright copen 6<CR>
+	nmap <silent><Leader>vr <Leader>vr :ccl<CR> :botright copen 6<CR>
+	vmap <silent><Leader>vs <Leader>vv :ccl<CR> :botright copen 6<CR>
+	vmap <silent><Leader>vt <Leader>vV :ccl<CR> :botright copen 6<CR>
+	vmap <silent><Leader>vr <Leader>vr :ccl<CR> :botright copen 6<CR>
+	nmap <silent><Leader>vo :GrepOptions<CR>
+	nmap <silent><Leader>vu :ReplaceUndo<CR>
+
+	nmap ;vs :Grep 
+	nmap ;vr :Replace 
 endif	
 
 " ============================================================================
@@ -828,6 +838,8 @@ endif
 " ---不常用命令记录
 " :set nonu #不显示行号
 " :ccl #关闭quickfix窗口
+" :%s/<目标>/<替换为>/g  #当前文件不询问直接替换
+" :%s/<目标>/<替换为>/gc #当前文件询问替换
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 

@@ -1520,7 +1520,8 @@ function! s:CreateGrepDictionary()
     endif
 
     let s:Dict = [ ]
-    call add(s:Dict, [ "All" , "*", g:EasyGrepMode==s:EasyGrepModeAll ? 1 : 0 ] )
+    " call add(s:Dict, [ "All" , "*", g:EasyGrepMode==s:EasyGrepModeAll ? 1 : 0 ] )
+    call add(s:Dict, [ "All" , "*.c *.h", g:EasyGrepMode==s:EasyGrepModeAll ? 1 : 0 ] )
     call add(s:Dict, [ "Buffers" , "*Buffers*", g:EasyGrepMode==s:EasyGrepModeBuffers ? 1 : 0  ] )
     call add(s:Dict, [ "TrackExt" , "*", g:EasyGrepMode==s:EasyGrepModeTracked ? 1 : 0  ] )
     call add(s:Dict, [ "User" , "", g:EasyGrepMode==s:EasyGrepModeUser ? 1 : 0  ] )
@@ -3456,7 +3457,7 @@ if !exists("g:EasyGrepCommand")
 endif
 
 if !exists("g:EasyGrepRecursive")
-    let g:EasyGrepRecursive=0
+    let g:EasyGrepRecursive=1
 endif
 
 if !exists("g:EasyGrepIgnoreCase")
@@ -3492,7 +3493,7 @@ if !exists("g:EasyGrepSearchCurrentBufferDir")
 endif
 
 if !exists("g:EasyGrepInvertWholeWord")
-    let g:EasyGrepInvertWholeWord=0
+    let g:EasyGrepInvertWholeWord=1
 endif
 
 " EasyGrepFileAssociations {{{
@@ -3540,11 +3541,11 @@ if !exists("g:EasyGrepOptionPrefix")
 endif
 
 if !exists("g:EasyGrepReplaceWindowMode")
-    let g:EasyGrepReplaceWindowMode=0
+    let g:EasyGrepReplaceWindowMode=2
 else
     if g:EasyGrepReplaceWindowMode >= s:NumReplaceModeOptions
         call EasyGrep#Error("Invalid value for g:EasyGrepReplaceWindowMode")
-        let g:EasyGrepReplaceWindowMode = 0
+        let g:EasyGrepReplaceWindowMode = 2
     endif
 endif
 
