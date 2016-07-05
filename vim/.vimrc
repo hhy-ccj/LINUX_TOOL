@@ -195,7 +195,7 @@ if (g:nerdtree_en)
 	Bundle 'scrooloose/nerdtree'
 endif
 " ~~~显示当前文件 所在路径/编码格式/光标所在文件百分比/行列号
-let g:powerline_en = 1
+let g:powerline_en = 0
 if (g:powerline_en)
 	Bundle 'Lokaltog/vim-powerline'
 endif
@@ -238,7 +238,7 @@ if (g:bufexplorer_en)
 	Bundle 'jlanzarotta/bufexplorer'
 endif
 " ~~~增加多窗口标签功能
-let g:minibufexpl_en = 1
+let g:minibufexpl_en = 0
 if (g:minibufexpl_en)
 	Bundle 'fholgado/minibufexpl.vim'
 endif
@@ -257,6 +257,14 @@ endif
 let g:easygrep = 1
 if (g:easygrep)
 	Bundle 'dkprice/vim-easygrep'
+endif
+
+" ~~~
+let g:airline_en = 1
+if (g:airline_en)
+	Bundle 'vim-airline/vim-airline'
+	Bundle 'vim-airline/vim-airline-themes'
+	Bundle 'tpope/vim-fugitive'
 endif
 
 
@@ -331,6 +339,64 @@ if (g:powerline_en)
 	" 安装方法：打开"LINUX_TOOL/vim/.vim/fonts/consolas-powerline-vim-master"，双击.ttf结尾的字体文件即可(windows 和 linux下安装方法相同)
 	" set guifont=Courier_New:h13:cANSI " 字体字号设置：h13代表字号
 	set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
+endif
+" -------------------------------------------------------------
+"  < vim-airline 插件配置 >
+" -------------------------------------------------------------
+if (g:airline_en)
+	set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
+	" Always show the statusline
+	set laststatus=2   
+
+	let g:airline_powerline_fonts = 1
+	let g:Powerline_symbols = 'fancy'
+
+
+	let g:airline#extensions#syntastic#enabled = 1
+
+	" enable/disable fugitive/lawrencium integration
+	" let g:airline#extensions#branch#enabled = 1
+	" let g:airline#extensions#branch#vcs_priority = ["git"]
+	"
+	" enable/disable detection of whitespace errors. >
+	let g:airline#extensions#whitespace#enabled = 0
+	let g:airline#extensions#whitespace#symbol = '!'
+
+	" enable/disable enhanced tabline. (c)
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#buffer_nr_show = 0
+	let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+	" switch position of buffers and tabs on splited tabline (c)
+	" let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
+
+	let g:airline#extensions#tabline#show_splits = 1
+	" let g:airline#extensions#tabline#show_buffers = 0
+	" let g:airline#extensions#tabline#show_tabs= 1
+	" let g:airline#extensions#tabline#show_tab_nr = 0
+	" let g:airline#extensions#tabline#show_tab_type = 0
+
+	" Show just the filename
+	let g:airline#extensions#tabline#fnamemod = ':t'
+	"设置切换Buffer快捷键"
+	nnoremap <C-N> :bn<CR>
+	nnoremap <C-P> :bp<CR>
+	""
+	nmap <leader>1 <Plug>AirlineSelectTab1
+	nmap <leader>2 <Plug>AirlineSelectTab2
+	nmap <leader>3 <Plug>AirlineSelectTab3
+	nmap <leader>4 <Plug>AirlineSelectTab4
+	nmap <leader>5 <Plug>AirlineSelectTab5
+	nmap <leader>6 <Plug>AirlineSelectTab6
+	nmap <leader>7 <Plug>AirlineSelectTab7
+	nmap <leader>8 <Plug>AirlineSelectTab8
+	nmap <leader>9 <Plug>AirlineSelectTab9
+	" nmap <leader>- <Plug>AirlineSelectPrevTab
+	" nmap <leader>+ <Plug>AirlineSelectNextTab
+
+	" fix exit insert mode delay
+	set ttimeoutlen=50   
+  let g:airline_theme='light'
 endif
 
 " -------------------------------------------------------------

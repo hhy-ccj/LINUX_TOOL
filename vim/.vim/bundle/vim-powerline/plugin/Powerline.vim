@@ -17,13 +17,22 @@
 " Set default options {{{
 	for [s:key, s:value] in items({
 		\   'theme'            : 'default'
-		\ , 'colorscheme'      : 'default'
+		\ , 'colorscheme'      : 'solarized16_new'
 		\ , 'symbols'          : 'compatible'
 		\ , 'symbols_override' : {}
 		\ , 'dividers_override': []
 		\ , 'stl_path_style'   : 'relative'
 		\ , 'cache_enabled'    : 1
 		\ })
+	" for [s:key, s:value] in items({
+	" 	\   'theme'            : 'default'
+	" 	\ , 'colorscheme'      : 'default'
+	" 	\ , 'symbols'          : 'compatible'
+	" 	\ , 'symbols_override' : {}
+	" 	\ , 'dividers_override': []
+	" 	\ , 'stl_path_style'   : 'relative'
+	" 	\ , 'cache_enabled'    : 1
+	" 	\ })
 
 		if ! exists('g:Powerline_' . s:key)
 			exec printf('let g:Powerline_%s = %s', s:key, string(s:value))
