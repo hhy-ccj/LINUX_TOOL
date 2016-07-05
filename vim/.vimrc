@@ -475,6 +475,13 @@ if (g:indent_guides_en)
 	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 endif
 
+" -------------------------------------------------------------
+"  < easygrep 插件配置 >
+" -------------------------------------------------------------
+if (g:easygrep)
+	nmap <silent>;vt <Leader>vv :botright copen 6<CR>
+	nmap <silent>;vs <Leader>vV :botright copen 6<CR>
+endif	
 
 " ============================================================================
 "							<< 工具配置 >>								
