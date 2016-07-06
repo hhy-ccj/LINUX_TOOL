@@ -94,7 +94,7 @@ set ruler                   " 打开状态栏标尺(默认已打开)
 set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%) 
 " 设置字体、字号
 set anti enc=utf-8
-set guifont=Courier_New:h13:cANSI
+" set guifont=Courier_New:h13:cANSI
 
 " ---缩进设置
 set tabstop=4               " 设定 tab 长度为 4
@@ -340,17 +340,16 @@ if (g:powerline_en)
 	" set guifont=Courier_New:h13:cANSI " 字体字号设置：h13代表字号
 	set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
+
 " -------------------------------------------------------------
 "  < vim-airline 插件配置 >
 " -------------------------------------------------------------
 if (g:airline_en)
-	set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
+	set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
 	" Always show the statusline
 	set laststatus=2   
 
 	let g:airline_powerline_fonts = 1
-	let g:Powerline_symbols = 'fancy'
-
 
 	let g:airline#extensions#syntastic#enabled = 1
 
@@ -378,9 +377,6 @@ if (g:airline_en)
 
 	" Show just the filename
 	let g:airline#extensions#tabline#fnamemod = ':t'
-	"设置切换Buffer快捷键"
-	nnoremap <C-N> :bn<CR>
-	nnoremap <C-P> :bp<CR>
 	""
 	nmap <leader>1 <Plug>AirlineSelectTab1
 	nmap <leader>2 <Plug>AirlineSelectTab2
@@ -396,7 +392,8 @@ if (g:airline_en)
 
 	" fix exit insert mode delay
 	set ttimeoutlen=50   
-  let g:airline_theme='light'
+	" theme:light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
+	let g:airline_theme='light'
 endif
 
 " -------------------------------------------------------------

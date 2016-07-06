@@ -63,7 +63,7 @@ function! airline#init#bootstrap()
         \ 'readonly': get(g:, 'airline_powerline_fonts', 0) ? "\ue0a2" : 'RO',
         \ 'whitespace': get(g:, 'airline_powerline_fonts', 0) ? "\u2739" : '!',
         \ 'linenr': get(g:, 'airline_powerline_fonts', 0) ? "\ue0a1" : ':',
-        \ 'maxlinenr': get(g:, 'airline_powerline_fonts', 0) ? '' : '',
+        \ 'maxlinenr': get(g:, 'airline_powerline_fonts', 0) ? "\u2630" : '',
         \ 'branch': get(g:, 'airline_powerline_fonts', 0) ? "\ue0a0" : '',
         \ 'notexists': "\u2204",
         \ 'modified': '+',
