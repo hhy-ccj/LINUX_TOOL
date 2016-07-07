@@ -31,9 +31,10 @@ let g:airline#themes#dark#palette = {}
 " let s:N1   = [ '#00005f' , '#dfff00' , 17  , 190 ]
 " let s:N2   = [ '#ffffff' , '#444444' , 255 , 238 ]
 " let s:N3   = [ '#9cffd3' , '#202020' , 85  , 234 ]
-let s:N1   = [ '#00005f' , '#dfff00' , 17  , 49 ]
+let s:N1   = [ '#00005f' , '#dfff00' , 17  , 45 ]
 let s:N2   = [ '#ffffff' , '#444444' , 45 , 53 ]
-let s:N3   = [ '#9cffd3' , '#202020' , 85  , 234 ]
+" let s:N3   = [ '#9cffd3' , '#202020' , 51  , 60 ]
+let s:N3   = [ '#9cffd3' , '#202020' , 20  , 60 ]
 let g:airline#themes#dark#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
 " Here we define overrides for when the buffer is modified.  This will be
@@ -44,7 +45,7 @@ let g:airline#themes#dark#palette.normal_modified = {
       \ }
 
 
-let s:I1 = [ '#00005f' , '#00dfff' , 17  , 45  ]
+let s:I1 = [ '#00005f' , '#00dfff' , 17  , 49  ]
 let s:I2 = [ '#ffffff' , '#005fff' , 255 , 27  ]
 let s:I3 = [ '#ffffff' , '#000080' , 15  , 17  ]
 let g:airline#themes#dark#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)

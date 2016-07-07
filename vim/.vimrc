@@ -766,7 +766,7 @@ nmap <SPACE> :
 " ---常规模式下 连续输入 88 取消搜索高亮
 nmap 88 :nohlsearch<CR>
 " ---常规模式下 输入 / 后全字匹配搜索
-nmap a/ 	/\<\><Left><Left>
+nmap ;/ 	/\<\><Left><Left>
 " ---常规模式下 重新映射系统默认窗口切换快捷键
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
