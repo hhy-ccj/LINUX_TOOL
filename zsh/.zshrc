@@ -135,6 +135,7 @@ hash -d br17_tr="/home/huayue/jl_svn/br17/trunk/FPGA"
 hash -d svn_addr="https://192.168.8.211:9001/svn"
 hash -d svn_addr_br17_branches="https://192.168.8.211:9001/svn/BR17/branches/FPGA/dual_single_thread/code"
 hash -d svn_addr_br17_trunk="https://192.168.8.211:9001/svn/BR17/trunk/FPGA/dual_single_thread/code"
+hash -d svn_addr_br16="https://192.168.8.211:9001/svn/br16_verify"
 # for my git
 hash -d git_tool_addr="git@github.com:hhy-ccj/LINUX_TOOL"
 # ---快捷命令

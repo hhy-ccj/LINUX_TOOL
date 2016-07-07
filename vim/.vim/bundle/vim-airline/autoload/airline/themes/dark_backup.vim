@@ -28,11 +28,8 @@ let g:airline#themes#dark#palette = {}
 " to the dictionary.  The array is in the format:
 " [ guifg, guibg, ctermfg, ctermbg, opts ]. See "help attr-list" for valid
 " values for the "opt" value.
-" let s:N1   = [ '#00005f' , '#dfff00' , 17  , 190 ]
-" let s:N2   = [ '#ffffff' , '#444444' , 255 , 238 ]
-" let s:N3   = [ '#9cffd3' , '#202020' , 85  , 234 ]
-let s:N1   = [ '#00005f' , '#dfff00' , 17  , 49 ]
-let s:N2   = [ '#ffffff' , '#444444' , 45 , 53 ]
+let s:N1   = [ '#00005f' , '#dfff00' , 17  , 190 ]
+let s:N2   = [ '#ffffff' , '#444444' , 255 , 238 ]
 let s:N3   = [ '#9cffd3' , '#202020' , 85  , 234 ]
 let g:airline#themes#dark#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 

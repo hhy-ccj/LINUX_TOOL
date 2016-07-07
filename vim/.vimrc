@@ -345,7 +345,7 @@ endif
 "  < vim-airline 插件配置 >
 " -------------------------------------------------------------
 if (g:airline_en)
-	set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
+	" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
 	" Always show the statusline
 	set laststatus=2   
 
@@ -392,8 +392,9 @@ if (g:airline_en)
 
 	" fix exit insert mode delay
 	set ttimeoutlen=50   
-	" theme:light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
-	let g:airline_theme='light'
+	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
+	"papercolor kolor kalisi behelit base16color 
+	let g:airline_theme='dark'
 endif
 
 " -------------------------------------------------------------
@@ -795,7 +796,7 @@ nmap cS :%s/\s\+$//g<cr>:noh<cr>
 nmap cM :%s/\r$//g<cr>:noh<cr>
 
 " ---常规模式下 makefile 快捷键
-let g:mf_way=1
+let g:mf_way=0
 " for codeblocks build
 function! Codeblocks_build()
 	set makeprg=codeblocks\ --build\ *.cbp 	
@@ -811,19 +812,33 @@ function! Makefile_build()
 	botright copen 6
 	" normal G
 endfunction
+function! MakeALL_libs()
+	set makeprg=make
+	make -f MakeALL.mk clean -j
+	make -f MakeALL.mk -j
+	botright copen 6
+endfunction
+function! MakeALL_apps()
+	set makeprg=make
+	make -f MakeALL.mk clean-apps -j
+	make -f MakeALL.mk apps -j
+	botright copen 6
+endfunction
 if (g:mf_way)
 	" nmap <F7> :wa<CR> :make -j<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
 	" for makefile build
 	" nmap <F7> :wa<CR> :set makeprg=make<CR> 						:make clean<CR><CR> :make -j<CR><CR><CR> 	:botright copen 6<CR> <Esc>G<CR>
-	nmap <F7> :call Makefile_build()<CR> <Esc>/error<CR><CR>
+	nmap <F7> :call Makefile_build()<CR> <Esc>/\<error\><CR><CR>
 	" for codeblocks build
 	" nmap <F8> :wa<CR> :set makeprg=codeblocks\ --build\ *.cbp<CR> 	:make<CR><CR><CR>							:botright copen 6<CR> <Esc>G<CR>
-	nmap <F8> :call Codeblocks_build()<CR> <Esc>/error<CR><CR>
+	nmap <F8> :call Codeblocks_build()<CR> <Esc>/\<error\><CR><CR>
 else
-	nmap <F7> :wa<CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
-	nmap <F8> :wa<CR> :make -f MakeALL.mk clean<CR><CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
-	" nmap <F9> :wa<CR> :make -j -f MakeALL.mk 
-	nmap <F9> :wa<CR> :make -j -f MakeALL.mk<CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	" nmap <F7> :wa<CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	" nmap <F8> :wa<CR> :make -f MakeALL.mk clean<CR><CR> :make -j -f MakeALL.mk apps<CR><CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	" " nmap <F9> :wa<CR> :make -j -f MakeALL.mk 
+	" nmap <F9> :wa<CR> :make -j -f MakeALL.mk<CR><CR> :botright copen 6<CR> <Esc>G<CR>
+	nmap <F6> :call MakeALL_libs()<CR> <Esc>/\<error\><CR><CR>
+	nmap <F7> :call MakeALL_apps()<CR> <Esc>/\<error\><CR><CR>
 endif
 
 " ---插入模式下 快捷键
@@ -882,11 +897,13 @@ nmap ;s :source ~/.vimrc<CR>
 nmap - :tabp<CR>
 nmap = :tabn<CR>
 
+" ---常规模式下 定义跳转
+nmap go <c-]>
+
 
 if exists('$TMUX')
     set term=screen-256color
 endif
-
 
 " ---当修改.vimrc并执行保存动作后，自动source该文件
 " autocmd BufWritePost .vimrc source ~/.vimrc
