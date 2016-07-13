@@ -410,6 +410,7 @@ if (g:nerdtree_en)
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 	map <F2> :NERDTreeToggle<CR>
 endif
+    let NERDTreeIgnore=['.d$[[file]]', '.o$[[file]]']
 " 常用快捷键(要将光标跳到NERDTree窗口)
 	" I : 显示隐藏文件
 	" o : 打开目录折叠或者打开文件并跳到该文件窗口
