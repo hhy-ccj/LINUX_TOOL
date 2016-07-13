@@ -598,12 +598,7 @@ function! Session_save()
 	wviminfo! 	workspace.viminfo
 endfunction
 
-function!  CscopeSync()
-	if(g:islinux)
-		!bash sync.sh
-	else
-		!sync.bat
-	endif
+function!  Cscope_init()
 	" ---cscope设置
 	if has("cscope")
 		" 先断开先前的cscope链接
@@ -624,14 +619,14 @@ function!  CscopeSync()
 		endif 
 		set cscopeverbose 
 		" 自定义快捷键设置：针对光标在文件窗口
-		nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-		nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
-		nmap <Leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-		nmap <Leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
-		nmap <Leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
+		nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>
+		nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
+		nmap <Leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>
+		nmap <Leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
+		nmap <Leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
 		nmap <Leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
-		nmap <Leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
-		nmap <Leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>	
+		nmap <Leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen 6<CR>
+		nmap <Leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
 		" 自定义快捷键设置：针对光标在命令输入窗口
 		nmap ;fs :cscope find s 
 		nmap ;fg :cscope find g 
@@ -647,8 +642,18 @@ function!  CscopeSync()
 		let g:LookupFile_TagExpr = '"./filenametags"'
 	endif
 endfunction
+
+function!  CscopeSync()
+	if(g:islinux)
+		!bash sync.sh
+	else
+		!sync.bat
+	endif
+	call Cscope_init()
+endfunction
 " autocmd BufWritePost *.c,*.h silent call CscopeSync()
 autocmd VimEnter *.c,*.h silent call CscopeSync()
+autocmd VimEnter * silent call Cscope_init()
 " autocmd VimEnter * call Session_load()
 " autocmd VimLeave * call Session_save()
 "---常规模式下键入 sy 使能该工具 
@@ -658,46 +663,6 @@ else
 	nmap sy :call CscopeSync()<CR><CR><CR>
 endif
 
-" if has("cscope")
-" 	"设定可以使用 quickfix 窗口来查看 cscope 结果
-" 	set cscopequickfix=s-,c-,d-,i-,t-,e-
-" 	"使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳转
-" 	set cscopetag
-" 	"如果你想反向搜索顺序设置为1
-" 	set csto=0
-" 	"在当前目录中添加任何数据库
-" 	if filereadable("cscope.out") 
-" 		cs add cscope.out 
-" 		"否则添加数据库环境中所指出的 
-" 	elseif $CSCOPE_DB != "" 
-" 		cs add $CSCOPE_DB 
-" 	endif 
-" 	set cscopeverbose 
-" 	"---常规模式下键入 sy 使能该工具 
-" 	if(g:islinux) 
-" 		nmap sy :!bash sync.sh<CR><CR>
-" 	else
-" 		nmap sy :!sync.bat<CR><CR>
-" 	endif
-" 	"---自定义快捷键设置：针对光标在文件窗口
-" 	nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:cw<CR>
-" 	nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:cw<CR>	
-" 	nmap <Leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:cw<CR>
-" 	nmap <Leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:cw<CR>	
-" 	nmap <Leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:cw<CR>	
-" 	nmap <Leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
-" 	nmap <Leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:cw<CR>
-" 	nmap <Leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:cw<CR>	
-" 	"---自定义快捷键设置：针对光标在命令输入窗口
-" 	nmap fs :cscope find s 
-" 	nmap fg :cscope find g 
-" 	nmap fc :cscope find c 
-" 	nmap ft :cscope find t 
-" 	nmap fe :cscope find e 
-" 	nmap ff :cscope find f 
-" 	nmap fi :cscope find i 
-" 	nmap fd :cscope find d 
-" endif
 
 " -------------------------------------------------------------
 "  < vimtweak 工具配置 > 
@@ -921,6 +886,11 @@ endif
 " :%s/目标/替换为/g  #当前文件不询问直接替换
 " :%s/目标/替换为/gc #当前文件询问替换
 " :%s/\<目标\>/替换为/gc #当前文件询问并整词匹配替换
+" :bdelete x #关闭x号buffer
+" :ls #显示当前buffers
+" :set paste   #进入全格式粘贴模式，shift+insert全格式粘贴
+" :set nopaste #取消全格式粘贴模式
+" 常规模式下 gd 可以跳转到局部变量定义处
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 
