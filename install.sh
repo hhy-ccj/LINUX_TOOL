@@ -12,3 +12,6 @@ ln -s $tool_path/zsh/.oh-my-zsh				$HOME/
 ln -s $tool_path/zsh/.zshrc					$HOME/
 ln -s $tool_path/zsh/.tmux					$HOME/
 ln -s $tool_path/zsh/.tmux/.tmux.conf		$HOME/
+# 在$HOME下创建tmux工作区间保存目录
+rm -rf	$HOME/.tmux_workspace_save
+mkdir 	$HOME/.tmux_workspace_save

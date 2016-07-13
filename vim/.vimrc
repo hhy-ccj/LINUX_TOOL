@@ -866,6 +866,12 @@ nmap = :tabn<CR>
 " ---常规模式下 定义跳转
 nmap go <c-]>
 
+" ---常规模式下 指定数值光标移动
+nmap H 6h
+nmap J 6j
+nmap K 6k
+nmap L 6l
+
 
 if exists('$TMUX')
     set term=screen-256color
