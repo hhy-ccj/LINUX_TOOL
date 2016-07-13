@@ -193,6 +193,10 @@ fi
 
 # export LANGUAGE=en_US.UTF-8
 
+# tmux工作区间临时文件定位到~/.tmux_workspace_save
+export TMPDIR=~/.tmux_workspace_save
+#alias tmux_fix='TMPDIR=~/.tmux_workspace_save tmux'
+
 # autojump 配置
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
