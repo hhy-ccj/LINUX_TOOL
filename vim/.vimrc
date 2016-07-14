@@ -203,7 +203,7 @@ endif
 let g:echofunc_en = 0
 if (g:echofunc_en)
 	Bundle 'mbbill/echofunc'
-	Bundle 'vim-scripts/echofunc.vim'
+	" Bundle 'vim-scripts/echofunc.vim'
 endif
 " ~~~注释与反注释所选内容(两个插件可以二选一)
 let g:tcomment_en = 1
@@ -259,12 +259,18 @@ if (g:easygrep)
 	Bundle 'dkprice/vim-easygrep'
 endif
 
-" ~~~
+" ~~~状态栏+minibuf显示工具
 let g:airline_en = 1
 if (g:airline_en)
 	Bundle 'vim-airline/vim-airline'
 	Bundle 'vim-airline/vim-airline-themes'
 	Bundle 'tpope/vim-fugitive'
+endif
+
+" ~~~语法自动补全
+let g:youcompleteme_en = 0
+if (g:youcompleteme_en)
+	Bundle 'Valloric/YouCompleteMe'
 endif
 
 
@@ -276,7 +282,6 @@ endif
 " let g:session_autoload = 'yes'
 " let g:session_autosave= 'yes'
 
-" Bundle 'Valloric/YouCompleteMe'
 " Bundle 'croaky/vim-colors-github
 " Bundle 'danro/rename.vim'
 " Bundle 'majutsushi/tagbar'
@@ -847,14 +852,17 @@ if (g:islinux)
 	nmap <Leader>ez :e ~/.zshrc<CR>
 endif
 
-" ---常规模式下 跳到句首或者句尾
+" ---跳到句首或者句尾
 " 使用说明："; + e" 跳到句尾
 "			"; + h" 跳到句首
 nmap ;e $
 nmap ;h ^
+vmap ;e $
+vmap ;h ^
 
-" ---常规模式下 使用复制缓存寄存器进行粘贴
+" ---使用复制缓存寄存器进行粘贴
 nmap ;p "0p
+vmap ;p "0p
 
 " ---常规模式下 重新source .vimrc
 nmap ;s :source ~/.vimrc<CR>
@@ -866,11 +874,20 @@ nmap = :tabn<CR>
 " ---常规模式下 定义跳转
 nmap go <c-]>
 
-" ---常规模式下 指定数值光标移动
-nmap H 6h
-nmap J 6j
-nmap K 6k
-nmap L 6l
+" ---指定数值光标移动
+nmap H 5h
+nmap J 5j
+nmap K 5k
+nmap L 5l
+vmap H 5h
+vmap J 5j
+vmap K 5k
+vmap L 5l
+
+" ---自动跳转到粘贴文本的最后 
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 
 if exists('$TMUX')
@@ -898,6 +915,20 @@ endif
 " :set paste   #进入全格式粘贴模式，shift+insert全格式粘贴
 " :set nopaste #取消全格式粘贴模式
 " 常规模式下 gd 可以跳转到局部变量定义处
+" :help cterm-colors可以查看颜色对应的值
+" hlsearch操作
+	" :set hlsearch  高亮所有匹配的字符串
+	" :nohlsearch 临时关闭
+	" :set nohlsearch 彻底关闭，只有重新:set hlsearch才可以高亮搜索
+" vimgrep操作
+	" vimgrep /匹配模式/[g][j] 要搜索的文件/范围
+	" g: 表示是否把每一行的多个匹配结果都加入
+	" j: 表示是否搜索完后定位到第一个匹配的位置
+	" vimgrep /pattern/%  在当前打开文件中查找
+	" vimgrep /pattern/ *   在当前目录下查找所有
+	" vimgrep /pattern/ **   在当前目录及其子目录下查找所有
+	" vimgrep /pattern/ *.c  查找当前目录下所有的.c文件
+	" vimgrep /pattern/ **/*  只查找子目录
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 
