@@ -401,8 +401,7 @@ if (g:airline_en)
 	let g:airline_theme='dark'
 
 	" set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
-	" set guifont=Sauce_Code_Powerline:h13:cANSI " 字体字号设置：h13代表字号
-	set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
+	set guifont=Droid_Sans_Mono_Slashed_for_Pow:h13:cANSI " 字体字号设置：h13代表字号
 	"set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
 
