@@ -350,7 +350,6 @@ endif
 "  < vim-airline 插件配置 >
 " -------------------------------------------------------------
 if (g:airline_en)
-	" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
 	" Always show the statusline
 	set laststatus=2   
 
@@ -400,6 +399,11 @@ if (g:airline_en)
 	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
 	"papercolor kolor kalisi behelit base16color 
 	let g:airline_theme='dark'
+
+	" set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
+	" set guifont=Sauce_Code_Powerline:h13:cANSI " 字体字号设置：h13代表字号
+	set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
+	"set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
 
 " -------------------------------------------------------------
