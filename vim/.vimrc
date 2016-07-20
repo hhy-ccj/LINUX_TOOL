@@ -60,24 +60,28 @@ endif
 " set cpoptions=aABceFsmq 
 
 " ---界面设置
-" colorscheme molokai         " 设定配色方案
-colorscheme Tomorrow-Night-Eighties         " 设定配色方案
-let g:solarized_en = 0
-if (g:solarized_en)
-	syntax enable
-	set background=dark
-	" set background=light
-	" let g:solarized_termcolors=256
-	colorscheme solarized		" 设定配色方案
-	" option name default optional ------------------------------------------------
-	let g:solarized_termcolors= 16 | 256 
-	let g:solarized_termtrans = 0 | 1 
-	let g:solarized_degrade = 0 | 1 
-	let g:solarized_bold = 1 | 0 
-	let g:solarized_underline = 1 | 0 
-	let g:solarized_italic = 1 | 0 
-	let g:solarized_contrast = "normal"| "high" or "low" 
-	let g:solarized_visibility= "normal"| "high" or "low"
+if (g:islinux)
+	colorscheme Tomorrow-Night-Eighties         " 设定配色方案
+else
+	" colorscheme molokai         " 设定配色方案
+	"
+	let g:solarized_en = 1
+	if (g:solarized_en)
+		syntax enable
+		set background=dark
+		" set background=light
+		" let g:solarized_termcolors=256
+		colorscheme solarized		" 设定配色方案
+		" option name default optional ------------------------------------------------
+		let g:solarized_termcolors= 16 | 256 
+		let g:solarized_termtrans = 0 | 1 
+		let g:solarized_degrade = 0 | 1 
+		let g:solarized_bold = 1 | 0 
+		let g:solarized_underline = 1 | 0 
+		let g:solarized_italic = 1 | 0 
+		let g:solarized_contrast = "normal"| "high" or "low" 
+		let g:solarized_visibility= "normal"| "high" or "low"
+	endif
 endif
 
 au GUIEnter * simalt ~x		" 启动窗口最大化
@@ -398,10 +402,15 @@ if (g:airline_en)
 	set ttimeoutlen=50   
 	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
 	"papercolor kolor kalisi behelit base16color 
-	let g:airline_theme='dark'
+	if (g:iswindows)
+		let g:airline_theme='simple'
+	else
+		let g:airline_theme='dark'
+	endif
 
 	" set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
-	set guifont=Droid_Sans_Mono_Slashed_for_Pow:h13:cANSI " 字体字号设置：h13代表字号
+	" set guifont=Droid_Sans_Mono_Slashed_for_Pow:h13:cANSI " 字体字号设置：h13代表字号
+	set guifont=Hack:h13:cANSI " 字体字号设置：h13代表字号
 	"set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
 
@@ -653,10 +662,11 @@ function!  Cscope_init()
 endfunction
 
 function!  CscopeSync()
+	cs kill -1
 	if(g:islinux)
 		!bash sync.sh
 	else
-		!sync.bat
+		silent !sync.bat
 	endif
 	call Cscope_init()
 endfunction
@@ -666,11 +676,7 @@ autocmd VimEnter * silent call Cscope_init()
 " autocmd VimEnter * call Session_load()
 " autocmd VimLeave * call Session_save()
 "---常规模式下键入 sy 使能该工具 
-if(g:islinux) 
-	nmap sy :call CscopeSync()<CR><CR><CR>
-else
-	nmap sy :call CscopeSync()<CR><CR><CR>
-endif
+nmap sy :call CscopeSync()<CR><CR><CR>
 
 
 " -------------------------------------------------------------
@@ -726,7 +732,8 @@ endif
 " 自带快捷键：没有 
 " 自定义快捷键："F11"
 if (g:iswindows)
-  map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+	map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+	autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
 endif
 
 
@@ -932,6 +939,8 @@ endif
 	" vimgrep /pattern/ **   在当前目录及其子目录下查找所有
 	" vimgrep /pattern/ *.c  查找当前目录下所有的.c文件
 	" vimgrep /pattern/ **/*  只查找子目录
+" :set guifont=* 	#windows下调用字体设置界面
+" :set guifont 		#windows下显示当前字号
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 
