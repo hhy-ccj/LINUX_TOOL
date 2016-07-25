@@ -224,7 +224,11 @@ endif
 let g:neocomplcache_en = 1
 if (g:neocomplcache_en)
 	Bundle 'Shougo/neocomplcache.vim'
-	" Bundle 'vim-scripts/OmniCppComplete'
+endif
+" ~~~C/C++结构体补全
+let g:OmniCppComplete_en = 1
+if (g:OmniCppComplete_en)
+	Bundle 'vim-scripts/OmniCppComplete'
 endif
 " ~~~C语言语法高亮
 let g:std_c_en = 1
@@ -409,6 +413,7 @@ if (g:airline_en)
 	endif
 
 	" set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
+	" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
 	" set guifont=Droid_Sans_Mono_Slashed_for_Pow:h13:cANSI " 字体字号设置：h13代表字号
 	set guifont=Hack:h13:cANSI " 字体字号设置：h13代表字号
 	"set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
@@ -500,16 +505,6 @@ if (g:neocomplcache_en)
 	" let g:neocomplcache_disable_auto_complete = 1 "不自动弹出补全列表
 endif
 
-" -------------------------------------------------------------
-"  < omnicppcomplete 插件配置 >
-" -------------------------------------------------------------
-" 用于C/C++代码补全，这种补全主要针对命名空间、类、结构、共同体等进行补全，详细
-" 说明可以参考帮助或网络教程等
-" 使用前先执行如下 ctags 命令（本配置中可以直接使用 ccvext 插件来执行以下命令）
-" ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
-" 我使用上面的参数生成标签后，对函数使用跳转时会出现多个选择
-" 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
-" set completeopt=menu                        "关闭预览窗口
 
 " -------------------------------------------------------------
 "  < TagList 插件配置 >
@@ -536,7 +531,7 @@ endif
 "  < echofunc 插件配置 >
 " -------------------------------------------------------------
 if (g:echofunc_en)
-	set tags=./tags
+	" set tags=./tags
 endif
 
 " -------------------------------------------------------------
@@ -574,6 +569,35 @@ if (g:easygrep)
 	nmap ;vs :Grep 
 	nmap ;vr :Replace 
 endif	
+
+
+" -------------------------------------------------------------
+"  < omnicppcomplete 插件配置 >
+" -------------------------------------------------------------
+" 用于C/C++代码补全，这种补全主要针对命名空间、类、结构、共同体等进行补全
+" 使用前先执行如下 ctags 命令（本配置中可以直接使用 ccvext 插件来执行以下命令）
+" ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+if (g:OmniCppComplete_en)
+	" set completeopt=menu,menuone  
+	" let OmniCpp_MayCompleteDot=1    "打开  . 操作符
+	" let OmniCpp_MayCompleteArrow=1  "打开 -> 操作符
+	" let OmniCpp_MayCompleteScope=1  "打开 :: 操作符
+	" let OmniCpp_NamespaceSearch=1   "打开命名空间
+	" let OmniCpp_GlobalScopeSearch=1  
+	" let OmniCpp_DefaultNamespace=["std"]  
+	" let OmniCpp_ShowPrototypeInAbbr=1  		"打开显示函数原型
+	" let OmniCpp_SelectFirstItem = 2			"自动弹出时自动跳至第一个
+	set nocp
+	filetype plugin on
+	" set completeopt=longest,menu "关闭菜单
+	" let OmniCpp_NamespaceSearch = 2     " search namespaces in the current buffer   and in included files
+	let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
+	" let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
+	" let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+	"
+	" set autochdir
+	" set tags=tags;
+endif
 
 " ============================================================================
 "							<< 工具配置 >>								
@@ -777,7 +801,7 @@ nmap cS :%s/\s\+$//g<cr>:noh<cr>
 nmap cM :%s/\r$//g<cr>:noh<cr>
 
 " ---常规模式下 makefile 快捷键
-let g:mf_way=0
+let g:mf_way=1
 " for codeblocks build
 function! Codeblocks_build()
 	set makeprg=codeblocks\ --build\ *.cbp 	
