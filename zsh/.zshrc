@@ -150,6 +150,8 @@ alias e_sh="echo $SHELL" #显示当前shell
 alias open_destop="startxfce4" #打开linux destop图形界面
 alias dswp="find -name \"*.swp\" | xargs rm -rf" #删除当前目录下所有*.swp文件
 alias dgit="find -name \".git\" | xargs rm -rf" #删除当前目录下所有.git文件
+alias dsync="find -name \"tags\" -o -name \"filenametags\" -o -name \"cscope.out\" | xargs rm -rf" #删除当前目录下所有同步文件
+alias dsvn="find -name \"tags\" -o -name \"filenametags\" -o -name \"cscope.out\" -o -name \"*.layout\" -o -name \"*.depend\" -o -name \"obj\" -o -name \"*.or32\" -o -name \"*.o\" -o -name \"*.d\" -o -name \"*.swp\" -o -name \"*.lst\" -o -name \"map.txt\" -o -name \"*.lit\" | xargs rm -rf" #删除当前目录下所有同步文件
 alias ln="ln -s" #创建快捷方式
 # for svn
 alias sll="svn log -l"
