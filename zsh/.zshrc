@@ -110,11 +110,11 @@ recolor-cmd()
 						  res=$(LC_ALL=C builtin type $arg 2>/dev/null)
 						 case $res in
 							*'reserved word'*)   style="fg=magenta,bold";;
-			 *'alias for'*)       style="fg=cyan,bold";;
+			 *'alias for'*)       style="fg=red,bold";;
 					 *'shell builtin'*)   style="fg=yellow,bold";;
 							 *'shell function'*)  style='fg=green,bold';;
 									 *"$arg is"*)
-													 [[ $arg = 'sudo' ]] && style="fg=red,bold" || style="fg=blue,bold";;
+													 [[ $arg = 'sudo' ]] && style="fg=red,bold" || style="fg=cyan,bold";;
 											 *)                   style='none,bold';;
 												 esac
 														 region_highlight+=("$start_pos $end_pos $style")
@@ -178,6 +178,12 @@ alias mgpush="git push origin master -f" #上传到远程仓库master主线上
 alias mgpull="git pull" #从远程仓库获取最新版本并merge到本地
 alias mgr="git revert HEAD" #取消上次commit
 alias mgd="git diff" #比较本地跟远程的差别
+# 命令备忘
+# tree #目录结构查看
+# cp -rf ./. xxx/xxx #复制当前文件夹所有文件(包括隐藏)及其向下递归子目录文件(包括隐藏)到xxx/xxx下
+# cp -rf ./* xxx/xxx #复制当前文件夹所有文件(包括隐藏)及其向下递归子目录文件(不包括隐藏)到xxx/xxx下
+# rm -rf * #删除当前文件夹下所有文件及目录
+
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
 export PI32="/opt/pi32/bin"

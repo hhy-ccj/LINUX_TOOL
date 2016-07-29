@@ -401,6 +401,7 @@ if (g:airline_en)
 	nmap <leader>9 <Plug>AirlineSelectTab9
 	" nmap <leader>- <Plug>AirlineSelectPrevTab
 	" nmap <leader>+ <Plug>AirlineSelectNextTab
+	"
 
 	" fix exit insert mode delay
 	set ttimeoutlen=50   
@@ -578,6 +579,8 @@ endif
 " 使用前先执行如下 ctags 命令（本配置中可以直接使用 ccvext 插件来执行以下命令）
 " ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
 if (g:OmniCppComplete_en)
+	set nocp
+	filetype plugin on
 	" set completeopt=menu,menuone  
 	" let OmniCpp_MayCompleteDot=1    "打开  . 操作符
 	" let OmniCpp_MayCompleteArrow=1  "打开 -> 操作符
@@ -587,8 +590,7 @@ if (g:OmniCppComplete_en)
 	" let OmniCpp_DefaultNamespace=["std"]  
 	" let OmniCpp_ShowPrototypeInAbbr=1  		"打开显示函数原型
 	" let OmniCpp_SelectFirstItem = 2			"自动弹出时自动跳至第一个
-	set nocp
-	filetype plugin on
+	"
 	" set completeopt=longest,menu "关闭菜单
 	" let OmniCpp_NamespaceSearch = 2     " search namespaces in the current buffer   and in included files
 	let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
