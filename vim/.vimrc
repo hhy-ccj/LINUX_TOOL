@@ -184,7 +184,7 @@ Bundle 'gmarik/vundle'
 " ~~~ctrlp用于文件搜索，ctrlpfunky用于搜索当前C/C++文件里的函数
 let g:ctrlp_en = 1
 if (g:ctrlp_en)
-	Bundle 'kien/ctrlp.vim'
+	" Bundle 'kien/ctrlp.vim'
 	Bundle 'tacahiroy/ctrlp-funky'
 endif
 " ~~~文件搜索(比ctrlp搜索更全)，genutils为lookupfile辅助插件，必须同时存在
@@ -281,6 +281,17 @@ if (g:youcompleteme_en)
 	Bundle 'Valloric/YouCompleteMe'
 endif
 
+" ~~~ctrlsf文本查找
+let g:ctrlsf_en = 0
+if (g:ctrlsf_en)
+	Bundle 'dyng/ctrlsf.vim'
+endif
+
+" ~~~
+let g:multiple_cursors_en = 1
+if (g:multiple_cursors_en)
+	Bundle 'terryma/vim-multiple-cursors'
+endif
 
 " ~~~管理当前vim session(会话)
 " Bundle 'xolox/vim-misc'
@@ -599,6 +610,36 @@ if (g:OmniCppComplete_en)
 	"
 	" set autochdir
 	" set tags=tags;
+endif
+
+
+" -------------------------------------------------------------
+"  < ctrlsf 插件配置 >
+" -------------------------------------------------------------
+if (g:ctrlsf_en)
+	nmap     <C-F>f <Plug>CtrlSFPrompt
+	vmap     <C-F>f <Plug>CtrlSFVwordPath
+	vmap     <C-F>F <Plug>CtrlSFVwordExec
+	nmap     <C-F>n <Plug>CtrlSFCwordPath
+	nmap     <C-F>p <Plug>CtrlSFPwordPath
+	nnoremap <C-F>o :CtrlSFOpen<CR>
+	nnoremap <C-F>t :CtrlSFToggle<CR>
+	inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+	nmap     <C-F>l <Plug>CtrlSFQuickfixPrompt
+	vmap     <C-F>l <Plug>CtrlSFQuickfixVwordPath
+	vmap     <C-F>L <Plug>CtrlSFQuickfixVwordExec
+endif
+
+
+" -------------------------------------------------------------
+"  < multiple-cursors 插件配置 >
+" -------------------------------------------------------------
+if (g:multiple_cursors_en)
+	" Default mapping
+	" let g:multi_cursor_next_key='<C-n>'
+	" let g:multi_cursor_prev_key='<C-p>'
+	" let g:multi_cursor_skip_key='<C-x>'
+	" let g:multi_cursor_quit_key='<Esc>'
 endif
 
 " ============================================================================

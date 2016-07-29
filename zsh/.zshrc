@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 #命令关键字高亮(导致svn 快捷路径^不能用)
 setopt extended_glob
 TOKENS_FOLLOWED_BY_COMMANDS=('|' '||' ';' '&' '&&' 'sudo' 'do' 'time' 'strace')
-  
+
 recolor-cmd() 
 {
 	 region_highlight=()
@@ -183,6 +183,9 @@ alias mgd="git diff" #比较本地跟远程的差别
 # cp -rf ./. xxx/xxx #复制当前文件夹所有文件(包括隐藏)及其向下递归子目录文件(包括隐藏)到xxx/xxx下
 # cp -rf ./* xxx/xxx #复制当前文件夹所有文件(包括隐藏)及其向下递归子目录文件(不包括隐藏)到xxx/xxx下
 # rm -rf * #删除当前文件夹下所有文件及目录
+# find -name "*.h" | xargs -I {} cp {} ./xxx #将当前目录及其子目录下所有*.h文件复制到./xxx文件夹下
+# find -type d | xargs rm -rf #删除当前目录下所有文件夹
+# find -type d -empty | xargs rm -rf #删除当前目录下所有空文件夹
 
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
