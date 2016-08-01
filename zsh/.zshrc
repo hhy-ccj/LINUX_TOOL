@@ -128,6 +128,11 @@ check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
 zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
+# ---cd目录后自动ls
+function cd {
+	    builtin cd "$@" && ls -lta
+		}	
+
 # ---相对路径快捷命令(进入相应路径时只要 cd ~xxx)
 hash -d br17_br="/home/huayue/jl_svn/br17/branches/FPGA/dual_single_thread/code"
 hash -d br17_tr="/home/huayue/jl_svn/br17/trunk/FPGA"
@@ -142,6 +147,7 @@ hash -d git_tool_addr="git@github.com:hhy-ccj/LINUX_TOOL"
 alias s="source ~/.zshrc"
 alias ll="ls -l"
 alias la="ls -al"
+alias lt="ls -lat"
 alias cp="cp -rf"
 alias rm="rm -rf"
 alias cls="clear"
