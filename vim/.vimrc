@@ -738,7 +738,7 @@ function!  CscopeSync()
 	call Cscope_init()
 endfunction
 " autocmd BufWritePost *.c,*.h silent call CscopeSync()
-autocmd VimEnter *.c,*.h silent call CscopeSync()
+" autocmd VimEnter *.c,*.h silent call CscopeSync()
 autocmd VimEnter * silent call Cscope_init()
 " autocmd VimEnter * call Session_load()
 " autocmd VimLeave * call Session_save()
@@ -899,6 +899,8 @@ imap pff<Enter> printf("\n--func=%s\n", __FUNCTION__);<Esc>
 " bit操作快捷键
 imap ba<Enter>  &= ~BIT();<Esc>F)i
 imap bo<Enter>  \|= BIT();<Esc>F)i
+imap or<Enter>  \|= <Esc>i
+imap an<Enter>  &= ~<Esc>a
 " 大括号自动补齐 输入"{"后按回车键自动补齐"}"并进入插入模式
 imap {<Enter> {<Esc>o<tab><Esc>o}<Esc>ka
 " 小括号自动补齐 输入"("后按回车键自动补齐")"并进入插入模式
@@ -924,9 +926,10 @@ else
 	nmap <Leader>ev :e $vim/_vimrc<CR>
 endif
 
-" ---常规模式下 编辑zshrc文件(仅适用于linux)
+" ---常规模式下 编辑zshrc/sync.h文件(仅适用于linux)
 if (g:islinux)
 	nmap <Leader>ez :e ~/.zshrc<CR>
+	nmap <Leader>es :e ~/.vim/tools/sync.sh<CR>
 endif
 
 " ---跳到句首或者句尾
@@ -952,10 +955,14 @@ nmap = :tabn<CR>
 nmap go <c-]>
 
 " ---指定数值光标移动
-nmap H 5h
-nmap J 5j
-nmap K 5k
-nmap L 5l
+map H 5h
+map J 5j
+map K 5k
+map L 5l
+nmap `h 5h
+nmap `j 5j
+nmap `k 5k
+nmap `l 5l
 vmap H 5h
 vmap J 5j
 vmap K 5k
