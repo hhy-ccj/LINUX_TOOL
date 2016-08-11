@@ -42,6 +42,7 @@ function! s:initVariable(var, value)
     return 0
 endfunction
 
+
 "SECTION: Init variable calls and other random constants {{{2
 call s:initVariable("g:NERDTreeAutoCenter", 1)
 call s:initVariable("g:NERDTreeAutoCenterThreshold", 3)
@@ -109,6 +110,7 @@ else
 endif
 
 
+
 "SECTION: Init variable calls for key mappings {{{2
 call s:initVariable("g:NERDTreeMapActivateNode", "o")
 call s:initVariable("g:NERDTreeMapChangeRoot", "C")
@@ -118,8 +120,8 @@ call s:initVariable("g:NERDTreeMapCloseDir", "x")
 call s:initVariable("g:NERDTreeMapDeleteBookmark", "D")
 call s:initVariable("g:NERDTreeMapMenu", "m")
 call s:initVariable("g:NERDTreeMapHelp", "?")
-call s:initVariable("g:NERDTreeMapJumpFirstChild", "K")
-call s:initVariable("g:NERDTreeMapJumpLastChild", "J")
+call s:initVariable("g:NERDTreeMapJumpFirstChild", "[")
+call s:initVariable("g:NERDTreeMapJumpLastChild", "]")
 call s:initVariable("g:NERDTreeMapJumpNextSibling", "<C-j>")
 call s:initVariable("g:NERDTreeMapJumpParent", "p")
 call s:initVariable("g:NERDTreeMapJumpPrevSibling", "<C-k>")
@@ -147,6 +149,7 @@ call s:initVariable("g:NERDTreeMapCWD", "CD")
 
 "SECTION: Load class files{{{2
 call nerdtree#loadClassFiles()
+
 
 " SECTION: Commands {{{1
 "============================================================
