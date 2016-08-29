@@ -1,5 +1,11 @@
 #!/bin/sh
-filter_path="find . ! -path ".*br17*" ! -path ".*ac461x_uboot_lib*" ! -path ".*bt16*""
+filter_path="find . \
+			 ! -path ".*br17*" \
+			 ! -path ".*bt16*" \
+			 ! -path ".*bc51*" \
+			 ! -path ".*ac461x_uboot_lib*" \
+			 ! -path ".*ram1_fix_run*""
+
 # echo $filter_path
 rm tags cscope.out filenametags
 ctags -R --fields=+lS --languages=+Asm --c++-kinds=+p --fields=+iaS --extra=+q
