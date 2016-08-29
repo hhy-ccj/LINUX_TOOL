@@ -15,3 +15,6 @@ ln -s $tool_path/zsh/.tmux/.tmux.conf		$HOME/
 # 在$HOME下创建tmux工作区间保存目录
 rm -rf	$HOME/.tmux_workspace_save
 mkdir 	$HOME/.tmux_workspace_save
+# 在$HOME下创建undo历史保存目录
+rm -rf	$HOME/.undo_history
+mkdir 	$HOME/.undo_history

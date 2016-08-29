@@ -127,6 +127,10 @@ if (g:islinux)
 	hi Normal  ctermfg=252 ctermbg=none 
 endif
 
+" ---开启保存 undo 历史功能
+set undofile
+set undodir=~/.undo_history/ "undo历史保存路径
+
 " ---其它操作
 "filetype on
 "filetype plugin on
