@@ -287,17 +287,48 @@ if (g:ctrlsf_en)
 	Bundle 'dyng/ctrlsf.vim'
 endif
 
-" ~~~同时选中编辑同一文件内相同字符串
+" ~~~
 let g:multiple_cursors_en = 1
 if (g:multiple_cursors_en)
 	Bundle 'terryma/vim-multiple-cursors'
 endif
 
-" ~~~分支undo
-let g:gundo_en = 1
-if (g:gundo_en)
-	Bundle 'sjl/gundo.vim'
-endif
+" ~~~管理当前vim session(会话)
+" Bundle 'xolox/vim-misc'
+" Bundle 'xolox/vim-session'
+" Bundle 'tpope/vim-obsession'
+" Bundle 'monokrome/vim-lazy-obsession'
+" let g:session_autoload = 'yes'
+" let g:session_autosave= 'yes'
+
+" Bundle 'croaky/vim-colors-github
+" Bundle 'danro/rename.vim'
+" Bundle 'majutsushi/tagbar'
+" Bundle 'kchmck/vim-coffee-script'
+" Bundle 'pbrisbin/vim-mkdir'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'slim-template/vim-slim'
+" Bundle 'thoughtbot/vim-rspec'
+" Bundle 'tpope/vim-bundler'
+" Bundle 'tpope/vim-endwise'
+" Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-surround'
+" Bundle 'vim-ruby/vim-ruby'
+" Bundle 'vim-scripts/ctags.vim'
+" Bundle 'vim-scripts/matchit.zip'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'godlygeek/tabular'
+" Bundle 'msanders/snipmate.vim'
+" Bundle 'jelera/vim-javascript-syntax'
+" Bundle 'othree/html5.vim'
+" Bundle 'xsbeats/vim-blade'
+" Bundle 'Raimondi/delimitMate'
+" Bundle 'groenewege/vim-less'
+" Bundle 'evanmiller/nginx-vim-syntax'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'tomasr/molokai'
+" Bundle 'klen/python-mode'
 
 filetype on
 
@@ -609,14 +640,6 @@ if (g:multiple_cursors_en)
 	" let g:multi_cursor_prev_key='<C-p>'
 	" let g:multi_cursor_skip_key='<C-x>'
 	" let g:multi_cursor_quit_key='<Esc>'
-endif
-
-" -------------------------------------------------------------
-"  < gundo 插件配置 >
-" -------------------------------------------------------------
-if (g:gundo_en)
-	" 调用 gundo 树
-	nnoremap <Leader>ud :GundoToggle<CR>
 endif
 
 " ============================================================================
