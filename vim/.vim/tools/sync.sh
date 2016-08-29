@@ -1,6 +1,6 @@
 #!/bin/sh
 filter_path="find . \
-			 ! -path ".*br16*" \
+			 ! -path ".*br17*" \
 			 ! -path ".*bt16*" \
 			 ! -path ".*bc51*" \
 			 ! -path ".*ac461x_uboot_lib*" \
