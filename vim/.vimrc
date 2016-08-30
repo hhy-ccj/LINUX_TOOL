@@ -64,8 +64,9 @@ if (g:islinux)
 	colorscheme Tomorrow-Night-Eighties         " 设定配色方案
 else
 	" colorscheme molokai         " 设定配色方案
+	colorscheme Tomorrow-Night-Eighties         " 设定配色方案
 	"
-	let g:solarized_en = 1
+	let g:solarized_en = 0
 	if (g:solarized_en)
 		syntax enable
 		set background=dark
@@ -129,7 +130,11 @@ endif
 
 " ---开启保存 undo 历史功能
 set undofile
-set undodir=~/.undo_history/ "undo历史保存路径
+if (g:islinux)
+	set undodir=~/.vim/undo_history/ "undo历史保存路径
+else
+	set undodir=$vim/vimfiles/undo_history/ "undo历史保存路径
+endif
 
 " ---其它操作
 "filetype on
@@ -704,9 +709,9 @@ function!  Cscope_init()
 		nmap ;fd :cscope find d 
 	endif
 	" ---lookupfile设置
-	if filereadable("filenametags")
+	" if filereadable("filenametags")
 		let g:LookupFile_TagExpr = '"./filenametags"'
-	endif
+	" endif
 endfunction
 
 function!  CscopeSync()
@@ -714,7 +719,7 @@ function!  CscopeSync()
 	if(g:islinux)
 		!bash sync.sh
 	else
-		silent !sync.bat
+		silent !sync.bat "\%f\\t\%p\\t1\\n"
 	endif
 	call Cscope_init()
 endfunction
@@ -781,7 +786,7 @@ endif
 " 自定义快捷键："F11"
 if (g:iswindows)
 	map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
-	autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+	" autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
 endif
 
 
@@ -911,6 +916,8 @@ endif
 if (g:islinux)
 	nmap <Leader>ez :e ~/.zshrc<CR>
 	nmap <Leader>es :e ~/.vim/tools/sync.sh<CR>
+else
+	nmap <Leader>es :e $vim/vimfiles/tools/sync.bat<CR>
 endif
 
 " ---跳到句首或者句尾
@@ -926,7 +933,9 @@ nmap ;p "0p
 vmap ;p "0p
 
 " ---常规模式下 重新source .vimrc
-nmap ;s :source ~/.vimrc<CR>
+if(g:islinux)
+	nmap ;s :source ~/.vimrc<CR>
+endif
 
 " ---常规模式下 tab标签页操作
 nmap - :tabp<CR>
