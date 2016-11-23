@@ -308,6 +308,12 @@ if (g:gundo_en)
 	Bundle 'sjl/gundo.vim'
 endif
 
+" ~~~光标快速定向移动
+let g:easymotion_en = 1
+if (g:easymotion_en)
+    Bundle 'easymotion/vim-easymotion'
+endif
+
 filetype on
 
 " -------------------------------------------------------------
@@ -397,15 +403,15 @@ if (g:airline_en)
 	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
 	"papercolor kolor kalisi behelit base16color 
 	if (g:iswindows)
-		let g:airline_theme='simple'
+		let g:airline_theme='kolor'
 	else
 		let g:airline_theme='dark'
 	endif
 
-	" set guifont=Ubuntu_Mono_derivative_Powerlin:h13:cANSI " 字体字号设置：h13代表字号
+	set guifont=Ubuntu_Mono_derivative_Powerlin:h15:cANSI " 字体字号设置：h13代表字号
 	" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Regular:h13:cANSI " 字体字号设置：h13代表字号
 	" set guifont=Droid_Sans_Mono_Slashed_for_Pow:h13:cANSI " 字体字号设置：h13代表字号
-	set guifont=Hack:h13:cANSI " 字体字号设置：h13代表字号
+	" set guifont=Hack:h13:cANSI " 字体字号设置：h13代表字号
 	"set guifont=Consolas\ for\ Powerline\ FixedD:h13 " 字体字号设置：h13代表字号
 endif
 
@@ -627,6 +633,28 @@ if (g:gundo_en)
 	" 调用 gundo 树
 	nnoremap <Leader>ud :GundoToggle<CR>
 endif
+
+" -------------------------------------------------------------                                                                                                                          
+"  < easymotion 插件配置 >
+" -------------------------------------------------------------
+if (g:easymotion_en)
+    let g:EasyMotion_do_mapping = 0 " Disable default mappings
+    " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+    " `s{char}{label}`
+    nmap 's <Plug>(easymotion-overwin-f)
+    " or
+    " `s{char}{char}{label}`
+    " Need one more keystroke, but on average, it may be more comfortable.
+    nmap 's <Plug>(easymotion-overwin-f2)
+       
+    " Turn on case insensitive feature
+    let g:EasyMotion_smartcase = 1
+       
+    " JK motions: Line motions
+    map ;j <Plug>(easymotion-j)
+    map ;k <Plug>(easymotion-k)
+endif  
+
 
 " ============================================================================
 "							<< 工具配置 >>								
@@ -1005,6 +1033,7 @@ endif
 	" vimgrep /pattern/ **/*  只查找子目录
 " :set guifont=* 	#windows下调用字体设置界面
 " :set guifont 		#windows下显示当前字号
+" [+d #宏定义快速查看
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 
