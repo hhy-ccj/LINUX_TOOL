@@ -403,9 +403,9 @@ if (g:airline_en)
 	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
 	"papercolor kolor kalisi behelit base16color 
 	if (g:iswindows)
-		let g:airline_theme='kolor'
+		let g:airline_theme='simple'
 	else
-		let g:airline_theme='dark'
+		let g:airline_theme='kolor'
 	endif
 
 	set guifont=Ubuntu_Mono_derivative_Powerlin:h15:cANSI " 字体字号设置：h13代表字号
@@ -991,6 +991,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" ---{}/()括号匹配
+nmap {	%
+
 
 if exists('$TMUX')
     set term=screen-256color
@@ -1034,6 +1037,9 @@ endif
 " :set guifont=* 	#windows下调用字体设置界面
 " :set guifont 		#windows下显示当前字号
 " [+d #宏定义快速查看
+" v-block 块模式下替换操作
+	" c:替换选中字符 
+	" C:替换选中字符到行尾 
 
 " VIM CONFIG SET BY huayue_hu*************************************************************************END
 

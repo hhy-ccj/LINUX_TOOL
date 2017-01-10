@@ -153,7 +153,8 @@ alias rm="rm -rf"
 alias cls="clear"
 alias chsh="chsh -s" #改变当前shell
 alias e_sh="echo $SHELL" #显示当前shell
-alias open_destop="startxfce4" #打开linux destop图形界面
+# alias open_destop="startxfce4" #打开linux destop图形界面
+alias open_destop="nautilus --no-desktop" #打开linux destop图形界面
 alias dswp="find -name \"*.swp\" | xargs rm -rf" #删除当前目录下所有*.swp文件
 alias dgit="find -name \".git\" | xargs rm -rf" #删除当前目录下所有.git文件
 alias dsync="find -name \"tags\" -o -name \"filenametags\" -o -name \"cscope.out\" -o -name \"cscope.input\" | xargs rm -rf" #删除当前目录下所有同步文件
@@ -194,6 +195,8 @@ alias mgd="git diff" #比较本地跟远程的差别
 # find -name "*.h" | xargs -I {} cp {} ./xxx #将当前目录及其子目录下所有*.h文件复制到./xxx文件夹下
 # find -type d | xargs rm -rf #删除当前目录下所有文件夹
 # find -type d -empty | xargs rm -rf #删除当前目录下所有空文件夹
+# hexdump xx #十六进制查看器
+# hexdump -C xx #十六进制查看器:显示对应ASCII，类似winhex界面
 
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
