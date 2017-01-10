@@ -18,3 +18,5 @@ mkdir 	$HOME/.tmux_workspace_save
 # 在$HOME下创建undo历史保存目录
 rm -rf	$HOME/.undo_history
 mkdir 	$HOME/.undo_history
+#自动安装zshell autojump插件
+python $HOME/.oh-my-zsh/custom/plugins/autojump/install.py
