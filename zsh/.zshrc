@@ -197,6 +197,10 @@ alias mgd="git diff" #比较本地跟远程的差别
 # find -type d -empty | xargs rm -rf #删除当前目录下所有空文件夹
 # hexdump xx #十六进制查看器
 # hexdump -C xx #十六进制查看器:显示对应ASCII，类似winhex界面
+# linux下使用 du查看某个文件或目录占用磁盘空间的大小
+	# du -ah --max-depth=1 	#显示当前目录下所有文件和文件夹(不含子目录)大小，另外：max-depth表示目录的深度
+	# du -sh 			   	#显示当前目录所占大小
+	# du -sh xxx			#显示xxx文件或者文件夹所占大小
 
 # 环境变量添加
 export PI32V2_TOOLCHAINS="opt/pi32v2/pi32v2-uclinux-toolchains"
