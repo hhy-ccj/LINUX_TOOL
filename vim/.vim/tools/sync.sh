@@ -1,9 +1,9 @@
 #!/bin/sh
 filter_path="find . \
 			 ! -path "*git*" \
-			 ! -path ".*br17*" \
+			 ! -path ".*br16*" \
 			 ! -path ".*bt16*" \
-			 ! -path ".*bc51*" \
+			 ! -path ".*mini_uboot*" \
 			 ! -path ".*ac461x_uboot_lib*" \
 			 ! -path ".*ram1_fix_run*""
 

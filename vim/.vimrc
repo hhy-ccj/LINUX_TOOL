@@ -131,7 +131,7 @@ endif
 " ---开启保存 undo 历史功能
 set undofile
 if (g:islinux)
-	set undodir=~/.vim/undo_history/ "undo历史保存路径
+	set undodir=~/.undo_history/ "undo历史保存路径
 else
 	set undodir=$vim/vimfiles/undo_history/ "undo历史保存路径
 endif
@@ -314,6 +314,12 @@ if (g:easymotion_en)
     Bundle 'easymotion/vim-easymotion'
 endif
 
+" ~~~多个关键字高亮
+let g:interestingwords_en = 1
+if (g:interestingwords_en)
+    Bundle 'lfv89/vim-interestingwords'
+endif
+
 filetype on
 
 " -------------------------------------------------------------
@@ -403,7 +409,7 @@ if (g:airline_en)
 	" theme:dark light simple badwolf molokai base16 murmur luna wombat bubblegum jellybeans laederon
 	"papercolor kolor kalisi behelit base16color 
 	if (g:iswindows)
-		let g:airline_theme='simple'
+		let g:airline_theme='kolor'
 	else
 		let g:airline_theme='kolor'
 	endif
@@ -634,8 +640,7 @@ if (g:gundo_en)
 	nnoremap <Leader>ud :GundoToggle<CR>
 endif
 
-" -------------------------------------------------------------                                                                                                                          
-"  < easymotion 插件配置 >
+" ------------------------------------------------------------- "  < easymotion 插件配置 >
 " -------------------------------------------------------------
 if (g:easymotion_en)
     let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -654,6 +659,29 @@ if (g:easymotion_en)
     map ;j <Plug>(easymotion-j)
     map ;k <Plug>(easymotion-k)
 endif  
+
+
+" ------------------------------------------------------------- 
+"  < interestingwords 插件配置 >
+" -------------------------------------------------------------
+if (g:interestingwords_en)
+	" nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+	" nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+	" nnoremap <silent> n :call WordNavigation('forward')<cr>
+	" nnoremap <silent> N :call WordNavigation('backward')<cr>
+	"
+	" set gui colors
+	" 			 						 浅蓝    浅绿   浅黄   浅红    粉红   浅紫
+	let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+
+	" set terminal colors
+	" let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+	"                                    蓝色    天蓝    红     草绿   紫色   深红
+	let g:interestingWordsTermColors = ['blue', 'cyan', 'red', '118', '135', '161']
+
+	" randomise the colors (applied to each new buffer):颜色随机化
+	let g:interestingWordsRandomiseColors = 1
+endif
 
 
 " ============================================================================
@@ -870,7 +898,8 @@ endfunction
 function! Makefile_build()
 	set makeprg=make
 	make clean
-	make -j
+	" make -j
+	make
 	botright copen 6
 	" normal G
 endfunction
