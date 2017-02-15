@@ -259,11 +259,6 @@ let g:minibufexpl_en = 0
 if (g:minibufexpl_en)
 	Bundle 'fholgado/minibufexpl.vim'
 endif
-" ~~~将相同缩进的代码以可视化方式显示
-let g:indent_guides_en = 1
-if (g:indent_guides_en)
-	Bundle 'nathanaelkane/vim-indent-guides'
-endif
 " ~~~书签提示
 let g:signature = 0
 if (g:signature)
@@ -275,7 +270,6 @@ let g:easygrep = 1
 if (g:easygrep)
 	Bundle 'dkprice/vim-easygrep'
 endif
-
 " ~~~状态栏+minibuf显示工具
 let g:airline_en = 1
 if (g:airline_en)
@@ -283,42 +277,47 @@ if (g:airline_en)
 	Bundle 'vim-airline/vim-airline-themes'
 	Bundle 'tpope/vim-fugitive'
 endif
-
 " ~~~语法自动补全
 let g:youcompleteme_en = 0
 if (g:youcompleteme_en)
 	Bundle 'Valloric/YouCompleteMe'
 endif
-
 " ~~~ctrlsf文本查找
 let g:ctrlsf_en = 0
 if (g:ctrlsf_en)
 	Bundle 'dyng/ctrlsf.vim'
 endif
-
 " ~~~同时选中编辑同一文件内相同字符串
 let g:multiple_cursors_en = 1
 if (g:multiple_cursors_en)
 	Bundle 'terryma/vim-multiple-cursors'
 endif
-
 " ~~~分支undo
 let g:gundo_en = 1
 if (g:gundo_en)
 	Bundle 'sjl/gundo.vim'
 endif
-
 " ~~~光标快速定向移动
 let g:easymotion_en = 1
 if (g:easymotion_en)
     Bundle 'easymotion/vim-easymotion'
 endif
-
 " ~~~多个关键字高亮
 let g:interestingwords_en = 1
 if (g:interestingwords_en)
     Bundle 'lfv89/vim-interestingwords'
 endif
+" ~~~多个关键字高亮
+let g:rainbow_parentheses = 1
+if (g:rainbow_parentheses)
+    Bundle 'kien/rainbow_parentheses.vim'
+endif
+" ~~~代码缩进提醒
+let g:indentLine_en = 1
+if (g:indentLine_en)
+    Bundle 'Yggdroot/indentLine'
+endif
+
 
 filetype on
 
@@ -537,24 +536,6 @@ if (g:echofunc_en)
 endif
 
 " -------------------------------------------------------------
-"  < indent-guides 插件配置 >
-" -------------------------------------------------------------
-if (g:indent_guides_en)
-	" 随 vim 自启动
-	let g:indent_guides_enable_on_vim_startup=0
-	" 从第二层开始可视化显示缩进
-	let g:indent_guides_start_level=2
-	" 色块宽度
-	let g:indent_guides_guide_size=1
-	" 快捷键 i 开/关缩进可视化
-	nmap <silent> <Leader>i <Plug>IndentGuidesToggle
-
-	let g:indent_guides_auto_colors = 0
-	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-endif
-
-" -------------------------------------------------------------
 "  < easygrep 插件配置 >
 " -------------------------------------------------------------
 " 详细参考 "~/.vim/bundle/vim-easygrep/README.md"
@@ -571,7 +552,6 @@ if (g:easygrep)
 	nmap ;vs :Grep 
 	nmap ;vr :Replace 
 endif	
-
 
 " -------------------------------------------------------------
 "  < omnicppcomplete 插件配置 >
@@ -602,7 +582,6 @@ if (g:OmniCppComplete_en)
 	" set tags=tags;
 endif
 
-
 " -------------------------------------------------------------
 "  < ctrlsf 插件配置 >
 " -------------------------------------------------------------
@@ -619,7 +598,6 @@ if (g:ctrlsf_en)
 	vmap     <C-F>l <Plug>CtrlSFQuickfixVwordPath
 	vmap     <C-F>L <Plug>CtrlSFQuickfixVwordExec
 endif
-
 
 " -------------------------------------------------------------
 "  < multiple-cursors 插件配置 >
@@ -640,7 +618,8 @@ if (g:gundo_en)
 	nnoremap <Leader>ud :GundoToggle<CR>
 endif
 
-" ------------------------------------------------------------- "  < easymotion 插件配置 >
+" ------------------------------------------------------------- "  
+"  < easymotion 插件配置 >
 " -------------------------------------------------------------
 if (g:easymotion_en)
     let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -660,7 +639,6 @@ if (g:easymotion_en)
     map ;k <Plug>(easymotion-k)
 endif  
 
-
 " ------------------------------------------------------------- 
 "  < interestingwords 插件配置 >
 " -------------------------------------------------------------
@@ -671,8 +649,8 @@ if (g:interestingwords_en)
 	" nnoremap <silent> N :call WordNavigation('backward')<cr>
 	"
 	" set gui colors
-	" 			 						 浅蓝    浅绿   浅黄   浅红    粉红   浅紫
-	let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+	" 			 						 浅蓝    浅绿   淡橙   浅红    粉红   浅紫
+	let g:interestingWordsGUIColors = ['#71dcff', '#A4E57E', '#F5E1AE', '#FF7272', '#FFB3FF', '#9999FF']
 
 	" set terminal colors
 	" let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
@@ -681,6 +659,58 @@ if (g:interestingwords_en)
 
 	" randomise the colors (applied to each new buffer):颜色随机化
 	let g:interestingWordsRandomiseColors = 1
+endif
+
+" ------------------------------------------------------------- 
+"  < rainbow_parentheses 插件配置 >
+" -------------------------------------------------------------
+if (g:rainbow_parentheses)
+	" Options
+	" let g:rbpt_colorpairs = [
+    " \ ['brown',       'RoyalBlue3'],
+    " \ ['Darkblue',    'SeaGreen3'],
+    " \ ['darkgray',    'DarkOrchid3'],
+    " \ ['darkgreen',   'firebrick3'],
+    " \ ['darkcyan',    'RoyalBlue3'],
+    " \ ['darkred',     'SeaGreen3'],
+    " \ ['darkmagenta', 'DarkOrchid3'],
+    " \ ['brown',       'firebrick3'],
+    " \ ['gray',        'RoyalBlue3'],
+    " \ ['black',       'SeaGreen3'],
+    " \ ['darkmagenta', 'DarkOrchid3'],
+    " \ ['Darkblue',    'firebrick3'],
+    " \ ['darkgreen',   'RoyalBlue3'],
+    " \ ['darkcyan',    'SeaGreen3'],
+    " \ ['darkred',     'DarkOrchid3'],
+    " \ ['red',         'firebrick3'],
+    " \ ]
+	let g:rbpt_max = 16
+	let g:rbpt_loadcmd_toggle = 0
+
+	" Commands
+	" :RainbowParenthesesToggle       " Toggle it on/off
+	" :RainbowParenthesesLoadRound    " (), the default when toggling
+	" :RainbowParenthesesLoadSquare   " []
+	" :RainbowParenthesesLoadBraces   " {}
+	" :RainbowParenthesesLoadChevrons " <>
+	
+	" Always On
+	au VimEnter * RainbowParenthesesToggle
+	" au Syntax * RainbowParenthesesLoadRound
+	" au Syntax * RainbowParenthesesLoadSquare
+	au Syntax * RainbowParenthesesLoadBraces
+endif
+
+" ------------------------------------------------------------- 
+"  < indentLine_en 插件配置 >
+" -------------------------------------------------------------
+if (g:indentLine_en)
+	" 高亮缩进符号
+	" let g:indentLine_setColors = 0
+	
+	" 缩进符号颜色设置
+	let g:indentLine_color_term = 'cyan'
+	let g:indentLine_color_gui = '#71dcff'
 endif
 
 
