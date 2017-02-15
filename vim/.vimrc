@@ -747,9 +747,11 @@ function!  Cscope_init()
 		set cscopeverbose 
 		" 自定义快捷键设置：针对光标在文件窗口
 		nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>
-		nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
+		vmap <Leader>fs <C-C>:cs find s <S-Insert><CR><CR>:botright copen 6<CR>
+		nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
 		nmap <Leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>
 		nmap <Leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
+		vmap <Leader>ft <C-C>:cs find t <S-Insert><CR><CR>:botright copen 6<CR>
 		nmap <Leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen 6<CR>	
 		nmap <Leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
 		nmap <Leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen 6<CR>
@@ -1022,6 +1024,14 @@ nnoremap <silent> p p`]
 
 " ---{}/()括号匹配
 nmap {	%
+
+" ---高亮光标所在关键字(光标位置不移动)
+nmap * *N
+" ---黄色高亮visual模式下选中关键字(光标位置不移动)
+"  注：/进入命令模式，命令模式不适用<S-Insert>命令，所以要cmap一下
+vmap <C-C> 			"+y
+cmap <S-Insert> 	<C-R>+
+vmap * 				<C-C>/<S-Insert><Enter>N
 
 
 if exists('$TMUX')
