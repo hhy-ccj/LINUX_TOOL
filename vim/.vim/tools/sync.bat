@@ -7,6 +7,10 @@ if "%PROCESSOR_ARCHITECTURE%"=="x86" (
    %~dp0\win32\find_linux32 . -not -regex ".*\.\(doc\|pdf\|o\|d\|obj\|lst\)" ^
    ! -path "*git*" ^
    ! -path "*bt16*" ^
+   ! -path "*br16*" ^
+   ! -path "*tools*" ^
+   ! -path "*download*" ^
+   ! -path "*doc*" ^
    -type f -printf "%1" | %~dp0\win32\sort_linux32 -f>>filenametags
 )
 if "%PROCESSOR_ARCHITECTURE%"=="x64" (
