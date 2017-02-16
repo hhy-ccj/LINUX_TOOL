@@ -102,6 +102,7 @@ set anti enc=utf-8
 " set guifont=Courier_New:h13:cANSI
 
 " ---缩进设置
+set expandtab				" tab转为空格
 set tabstop=4               " 设定 tab 长度为 4
 set shiftwidth=4			" (shift)+(</>)时对齐长度为 4
 set smartindent				" 为C程序提供自动缩进
@@ -711,6 +712,10 @@ if (g:indentLine_en)
 	" 缩进符号颜色设置
 	let g:indentLine_color_term = 'cyan'
 	let g:indentLine_color_gui = '#71dcff'
+
+	" let g:indentLine_setConceal = 2
+	" let g:indentLine_concealcursor = 'inc'
+	" let g:indentLine_conceallevel = 2
 endif
 
 
@@ -977,7 +982,7 @@ imap bo<Enter>  \|= BIT();<Esc>F)i
 imap or<Enter>  \|= <Esc>i
 imap an<Enter>  &= ~<Esc>a
 " 大括号自动补齐 输入"{"后按回车键自动补齐"}"并进入插入模式
-imap {<Enter> {<Esc>o<tab><Esc>o}<Esc>ka
+imap {<Enter> {<Esc>o<tab><Esc>o}<Esc>ka<tab><Esc>lDa
 " 小括号自动补齐 输入"("后按回车键自动补齐")"并进入插入模式
 imap (<Enter> ()<Esc>i
 
