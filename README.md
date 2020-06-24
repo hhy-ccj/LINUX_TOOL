@@ -1,9 +1,7 @@
-# LINUX TOOL
-使用说明：
-	1、cd 到$HOME下，git clone该仓库;
-	2、分别在HOME下创建快捷方式如下：
-		ln -s LINUX_TOOL/vim/.vim ./
-		ln -s LINUX_TOOL/vim/.vimrc ./
-		ln -s LINUX_TOOL/zsh/.oh-my-zsh ./
-		ln -s LINUX_TOOL/zsh/.zshrc ./
-		ln -s LINUX_TOOL/zsh/.tmux.conf ./
+# LINUX_TOOL
+## 使用说明：
+`cd` 到 `LINUX_TOOL` 路径下，输入命令
+```bash
+bash install.sh
+```
+>	即可愉快地使用个性化配置的 `oh-my-zsh` 和 `vim` 了
